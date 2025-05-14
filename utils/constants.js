@@ -1,0 +1,4 @@
+export const CDN_URL = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/";
+export const FOOD_IMAGE_URL = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/";
+export const RESTAURANTS_URL = "https://www.swiggy.com/dapi/restaurants/search/v3?lat=13.0843007&lng=80.2704622&str=all&trackingId=null&submitAction=ENTER&queryUniqueId=b8bcb180-d69b-d5e3-c9ff-9c94bcc4b0ee&selectedPLTab=RESTAURANT";
+export const MENU_URL = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=13.0843007&lng=80.2704622&restaurantId=";
