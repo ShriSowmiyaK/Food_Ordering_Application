@@ -31,9 +31,9 @@ const Body = () => {
             }
         </div>)
         :
-        (<div className="body-container">
-            <div className="filter-container">
-                <input className="search" placeholder="Search"
+        (<div className="body-container ">
+            <div className="filter-container p-4 m-4 flex gap-3">
+                <input className="input-box px-4 py-2 border border-solid border-black " placeholder="Search"
                     onChange={(e) => {
                         if (e.target.value != '') {
                             const filteredResData = OriginalRestaurantList.filter((res) =>
@@ -47,7 +47,7 @@ const Body = () => {
 
                 </input>
 
-                <button className="top-rated-restaurants" onClick={() => {
+                <button className="top-rated-btn px-4 py-2 bg-gray-100 rounded-lg border border-solid border-gray hover:bg-gray-200" onClick={() => {
                     const topRatedResData = OriginalRestaurantList.filter((res) => (res.card.card.info.avgRating >= 4.5));
 
                     setResDataList(topRatedResData);
@@ -56,7 +56,7 @@ const Body = () => {
                 </button>
 
             </div>
-            <div className="items-container">
+            <div className="items-containe flex flex-wrap justify-center">
                 {
                     resDataList.map((restaurant) => {
                         {/* console.log(restaurant); */ }
