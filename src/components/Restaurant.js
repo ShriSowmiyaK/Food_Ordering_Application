@@ -13,5 +13,17 @@ const Restaurant = (props) => {
         <h3 className="food-delivery-time">Delivery Time {sla.slaString}</h3>
     </div >);
 }
+export const SwiggyPromoted = (Restaurant) => {
+    return (props) => {
+        return (
+            < div >
+                <label className="rounded-lg font-bold bg-black text-white p-1 text-sm absolute">
+                    Promoted
+                </label>
+                <Restaurant {...props} />
+            </div >
+        );
+    }
 
+}
 export default Restaurant;

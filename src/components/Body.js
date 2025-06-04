@@ -1,19 +1,26 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import Restaurant from "./Restaurant";
+import Restaurant, { SwiggyPromoted } from "./Restaurant";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router";
 import useRestaurantList from "../../utils/useRestaurantList";
 import useOnlineStatus from "../../utils/useOnlineStatus";
-import OnlineStatusDisplay from "./OnlineStatusDisplay"
+import OnlineStatusDisplay from "./OnlineStatusDisplay";
+import { setRestaurant } from "../../utils/CartSlice";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 // import { RESTAURANT_LIST } from "../../utils/mockData";
 
 
 const Body = () => {
-
+    const dispatch = useDispatch();
     const onlineStatus = useOnlineStatus();
     const { OriginalRestaurantList, resDataList, SetOriginalRestaurantList, setResDataList } = useRestaurantList();
+    const PromotedRestaurant = SwiggyPromoted(Restaurant);
+    const handleRestaurant = (restaurant_id) => {
+        dispatch(setRestaurant(restaurant_id))
 
+    }
     //Checking online status 
 
     if (onlineStatus === false) {
@@ -47,7 +54,7 @@ const Body = () => {
 
                 </input>
 
-                <button className="top-rated-btn px-4 py-2 bg-gray-100 rounded-lg border border-solid border-gray hover:bg-gray-200" onClick={() => {
+                <button className="top-rated-btn px-4 py-2 font-bold bg-gray-100 rounded-lg border border-solid border-gray hover:bg-gray-200" onClick={() => {
                     const topRatedResData = OriginalRestaurantList.filter((res) => (res.card.card.info.avgRating >= 4.5));
 
                     setResDataList(topRatedResData);
@@ -56,13 +63,17 @@ const Body = () => {
                 </button>
 
             </div>
-            <div className="items-containe flex flex-wrap justify-center">
+            <div className="items-container flex flex-wrap justify-center">
                 {
                     resDataList.map((restaurant) => {
-                        {/* console.log(restaurant); */ }
                         return (
-                            <Link to={"/restaurants/" + restaurant.card.card.info.id} key={restaurant.card.card.info.id}>
-                                <Restaurant resData={restaurant} /></Link>);
+                            <Link to={"/restaurants/" + restaurant.card.card.info.id} onClick={() => { handleRestaurant(restaurant.card.card.info.id) }} key={restaurant.card.card.info.id}>
+                                {restaurant ?.card ?.card ?.info ?.promoted === true ?
+                                    (<PromotedRestaurant resData={restaurant} />) : (<Restaurant resData={restaurant} />)
+                               }
+
+                            </Link>
+                        );
 
                     })
                 }

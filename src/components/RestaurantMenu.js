@@ -4,39 +4,30 @@ import { FOOD_IMAGE_URL } from "../../utils/constants";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router";
 import useRestaurantMenu from "../../utils/useRestaurantMenu";
+import RestaurantCategory from "./RestaurantCategory";
+import { useState } from "react";
 
 
 const RestaurantMenu = () => {
 
     const { resid } = useParams();
-    const { ResDetails, ResMenu } = useRestaurantMenu(resid);
+    const [MenuToggle, SetMenuToggle] = useState(null);
+    const { ResDetails, MenuCategory } = useRestaurantMenu(resid);
+    // console.log(MenuCategory);
     if (ResDetails === null) {
         return <Shimmer />
     }
     const { name, avgRating, costForTwoMessage, cuisines } = ResDetails;
-    return (<div className="restaurant-menu-container">
-        <h1>{name}</h1>
-        <h3>{avgRating} {' '} {costForTwoMessage}</h3>
-        <h3>{cuisines.join(", ")}</h3>
-        <div className="menus">
-            <h2> MENU </h2>
-
-            {
-                ResMenu && ResMenu.map((item, index) => {
-                    const info = item ?.card ?.info || item ?.dish ?.info || {};
-                    const { imageId, name, description } = info;
-                    const price = info.price || info.defaultPrice;
-                    const id = info.id || info.id;
-                    return (<div key={id} className="menu-item">
-                        {imageId && <img className="fooditem" alt="food item" src={FOOD_IMAGE_URL + imageId} />}
-                        <h3>{name}</h3>
-                        {description && <p><b>Description : </b>{description}</p>}
-                        <h3>Rs {price / 100}</h3>
-                    </div>);
-                })
-            }
-
-        </div>
+    return (<div className="restaurant-menu-container text-center">
+        <h1 className="font-bold mt-6 mb-3 text-2xl">{name}</h1>
+        <h3 className="font-bold text-lg">Rating : {avgRating} <br />{costForTwoMessage}<br />{cuisines.join(", ")}</h3>
+        {
+            MenuCategory.map((category, index) => {
+                return <RestaurantCategory key={category ?.card ?.card ?.title} data={category}
+                    ShowIndex={index === MenuToggle ? true : false}
+                    SetShowIndex={() => SetMenuToggle(prev => prev === index ? null : index)} />
+            })
+        }
     </div>);
 }
 
