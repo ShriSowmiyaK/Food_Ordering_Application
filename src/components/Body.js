@@ -9,7 +9,7 @@ import OnlineStatusDisplay from "./OnlineStatusDisplay";
 import { setRestaurant } from "../../utils/CartSlice";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-// import { RESTAURANT_LIST } from "../../utils/mockData";
+// import { data } from "../../__mocks__/RestaurantMockData";
 
 
 const Body = () => {
@@ -21,6 +21,7 @@ const Body = () => {
         dispatch(setRestaurant(restaurant_id))
 
     }
+    console.log(OriginalRestaurantList);
     //Checking online status 
 
     if (onlineStatus === false) {
@@ -66,7 +67,6 @@ const Body = () => {
             <div className="items-container flex flex-wrap justify-center">
                 {
                     resDataList.map((restaurant) => {
-                        console.log(restaurant);
                         return (
                             <Link to={"/restaurants/" + restaurant.card.card.info.id} onClick={() => { handleRestaurant(restaurant.card.card.info.id) }} key={restaurant.card.card.info.id}>
                                 {restaurant ?.card ?.card ?.info ?.promoted === true ?
