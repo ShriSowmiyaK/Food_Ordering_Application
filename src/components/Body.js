@@ -16,7 +16,7 @@ const Body = () => {
     const dispatch = useDispatch();
     const onlineStatus = useOnlineStatus();
     const { OriginalRestaurantList, resDataList, SetOriginalRestaurantList, setResDataList } = useRestaurantList();
-    export const PromotedRestaurant = SwiggyPromoted(Restaurant);
+    const PromotedRestaurant = SwiggyPromoted(Restaurant);
     const handleRestaurant = (restaurant_id) => {
         dispatch(setRestaurant(restaurant_id))
 
