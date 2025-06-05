@@ -5,6 +5,8 @@ import { Provider } from "react-redux";
 import CartStore from "../utils/CartStore";
 import { BrowserRouter } from "react-router";
 import { data } from "../__mocks__/RestaurantDataList";
+import { act } from "react";
+
 
 global.fetch = jest.fn(() => {
     return Promise.resolve({
@@ -14,10 +16,10 @@ global.fetch = jest.fn(() => {
     })
 });
 
-it("should render the Body component with search", () => {
-    render(<BrowserRouter>
+it("should render the Body component with search", async () => {
+    await act(async () => render(<BrowserRouter >
         <Provider store={CartStore}>
             <Body />
         </Provider>
-    </BrowserRouter>);
+    </BrowserRouter >))
 })
