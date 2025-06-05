@@ -13,7 +13,7 @@ const Header = () => {
     const count = useSelector((store) => store.cart.count);
 
     return (
-        <div className="flex justify-between bg-yellow-100 shadow-lg px-4">
+        <div data-testid="Header" className="flex justify-between bg-yellow-100 shadow-lg px-4">
             <img className="w-28 h-28" alt="logo image" src={logo} />
             <div className="flex items-center">
                 <div className="px-4 font-bold">

@@ -16,7 +16,7 @@ const Body = () => {
     const dispatch = useDispatch();
     const onlineStatus = useOnlineStatus();
     const { OriginalRestaurantList, resDataList, SetOriginalRestaurantList, setResDataList } = useRestaurantList();
-    const PromotedRestaurant = SwiggyPromoted(Restaurant);
+    export const PromotedRestaurant = SwiggyPromoted(Restaurant);
     const handleRestaurant = (restaurant_id) => {
         dispatch(setRestaurant(restaurant_id))
 
@@ -66,6 +66,7 @@ const Body = () => {
             <div className="items-container flex flex-wrap justify-center">
                 {
                     resDataList.map((restaurant) => {
+                        console.log(restaurant);
                         return (
                             <Link to={"/restaurants/" + restaurant.card.card.info.id} onClick={() => { handleRestaurant(restaurant.card.card.info.id) }} key={restaurant.card.card.info.id}>
                                 {restaurant ?.card ?.card ?.info ?.promoted === true ?

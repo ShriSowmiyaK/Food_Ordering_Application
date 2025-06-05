@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { CDN_URL } from "../../utils/constants";
 const Restaurant = (props) => {
+
     const { resData } = props;
     const { cloudinaryImageId, name, cuisines, avgRating, costForTwo, sla } = resData ?.card ?.card ?.info;
     return (< div className="item m-4 p-4 w-56 rounded-lg bg-gray-100 hover:bg-gray-200" >
@@ -17,7 +18,7 @@ export const SwiggyPromoted = (Restaurant) => {
     return (props) => {
         return (
             < div >
-                <label className="rounded-lg font-bold bg-black text-white p-1 text-sm absolute">
+                <label data-testid="promoted-label" className="rounded-lg font-bold bg-black text-white p-1 text-sm absolute">
                     Promoted
                 </label>
                 <Restaurant {...props} />
