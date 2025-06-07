@@ -2,14 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { CDN_URL } from "../../utils/constants";
 import { useDispatch } from "react-redux";
-import { addItem, removeItem } from '../../utils/cartSlice';
+import { addItem, removeItem } from '../../utils/CartSlice';
 import { useSelector } from "react-redux";
 const ItemList = ({ data, removeButton }) => {
     const count = useSelector((store) => store.cart.itemCount)
     const { itemCards } = data;
     const dispatch = useDispatch();
     const handleAdd = (cardList) => {
-        console.log(cardList);
+        // console.log(cardList);
         dispatch(addItem(cardList));
     }
     const handledelete = (cardList) => {

@@ -22,7 +22,7 @@ const Body = () => {
 
     }
 
-    console.log(OriginalRestaurantList);
+    // console.log(OriginalRestaurantList);
     //Checking online status 
 
     if (onlineStatus === false) {

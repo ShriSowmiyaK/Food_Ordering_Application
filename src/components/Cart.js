@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import { useSelector } from "react-redux";
 import ItemList from "./ItemList";
 import { useDispatch } from "react-redux";
-import { emptyItems } from '../../utils/cartSlice';
+import { emptyItems } from '../../utils/CartSlice';
 const Cart = () => {
     const dispatch = useDispatch();
     const { items, cost } = useSelector((store) => store.cart);
