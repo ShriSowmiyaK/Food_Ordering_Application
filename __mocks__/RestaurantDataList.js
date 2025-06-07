@@ -1,3 +1,6 @@
+//There are 21 restaurant cards present
+//There are 8 restaurants at rating 4.5 and above
+//There are 3 Promoted restaurant cards
 export const data = {
     "statusCode": 0,
     "data": {

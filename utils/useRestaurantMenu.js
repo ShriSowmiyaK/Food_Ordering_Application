@@ -13,6 +13,7 @@ const useRestaurantMenu = (resid) => {
     const fetchMenu = async () => {
         const data = await fetch(MENU_URL + resid);
         const json = await data.json();
+        { console.log(json); }
         const MenuCategory = (json ?.data ?.cards[4] ?.groupedCard ?.cardGroupMap ?.REGULAR ?.cards).filter(
             (c) => c ?.card ?.card ?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory");
         const aboutRes = json ?.data ?.cards[2] ?.card ?.card ?.info;

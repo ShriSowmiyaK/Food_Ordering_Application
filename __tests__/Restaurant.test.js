@@ -17,3 +17,4 @@ it("should render Restaurant component with promoted label - testing hoc", () =>
     const label = screen.getByTestId("promoted-label");
     expect(label).toBeInTheDocument();
 })
+

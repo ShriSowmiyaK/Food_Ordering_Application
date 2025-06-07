@@ -1,3 +1,4 @@
+//1 Restaurant card of restaurant name "Cream Centre- Vegetarian Legacy Since 1958" and is promoted
 export const data = {
     "card": {
         "card": {

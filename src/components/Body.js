@@ -42,7 +42,7 @@ const Body = () => {
         :
         (<div className="body-container ">
             <div className="filter-container p-4 m-4 flex gap-3">
-                <input className="input-box px-4 py-2 border border-solid border-black " placeholder="Search"
+                <input data-testid="search" className="input-box px-4 py-2 border border-solid border-black " placeholder="Search"
                     onChange={(e) => {
                         if (e.target.value != '') {
                             const filteredResData = OriginalRestaurantList.filter((res) =>
@@ -56,7 +56,7 @@ const Body = () => {
 
                 </input>
 
-                <button className="top-rated-btn px-4 py-2 font-bold bg-gray-100 rounded-lg border border-solid border-gray hover:bg-gray-200" onClick={() => {
+                <button data-testid="top-rated" className="top-rated-btn px-4 py-2 font-bold bg-gray-100 rounded-lg border border-solid border-gray hover:bg-gray-200" onClick={() => {
                     const topRatedResData = OriginalRestaurantList.filter((res) => (res.card.card.info.avgRating >= 4.5));
 
                     setResDataList(topRatedResData);
@@ -65,7 +65,7 @@ const Body = () => {
                 </button>
 
             </div>
-            <div className="items-container flex flex-wrap justify-center">
+            <div data-testid="cards" className="items-container flex flex-wrap justify-center">
                 {
                     resDataList.map((restaurant) => {
                         return (

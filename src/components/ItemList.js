@@ -21,7 +21,7 @@ const ItemList = ({ data, removeButton }) => {
                 itemCards.map((cardList) => {
                     const { id, name, price, imageId, description, defaultPrice } = cardList ?.card ?.info;
                     const { rating } = cardList ?.card ?.info ?.ratings ?.aggregatedRating;
-                    return (<div key={id} className="flex items-center justify-between border-b-2 p-4">
+                    return (<div data-testid="items" key={id} className="flex items-center justify-between border-b-2 p-4">
                         <div className="w-3/4">
                             <p className="font-bold text-left text-lg">{name}</p>
                             <p className="font-bold text-left text-base p-2">₹ {price ? (price / 100) : (defaultPrice / 100)}</p>
@@ -37,7 +37,7 @@ const ItemList = ({ data, removeButton }) => {
                         >
                             {count[id]}
                         </div>}
-                        <button className="border border-black-100 h-15 hover:bg-gray-100 text-green 800 font-bold py-2 px-4 rounded-full"
+                        <button data-testid="add" className="border border-black-100 h-15 hover:bg-gray-100 text-green 800 font-bold py-2 px-4 rounded-full"
                             onClick={() => handleAdd(cardList)}>
                             ADD +
                         </button>
@@ -49,7 +49,7 @@ const ItemList = ({ data, removeButton }) => {
                     );
                 })
             }
-        </div>
+        </div >
     );
 }
 
