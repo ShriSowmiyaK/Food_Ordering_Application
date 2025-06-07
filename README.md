@@ -1,15 +1,18 @@
 Food Application Components
 
-    Header
+    -Header
         -Logo
         -Link
             -About
+            -Contact
             -Home
-            -Cart
-    Body
-        -SearchContainer
-        -ItemsContainer
-            -Item
-    Footer
-        -copyright
-        -Address
+            -Grocery
+            -Cart       
+    -Body
+        -Restaurant
+            -RestaurantMenu
+            -RestaurantCategory
+                -ItemList
+    -Error
+    -Shimmer
+    -OnlineStatusDisplay
